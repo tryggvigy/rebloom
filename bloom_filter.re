@@ -1,16 +1,3 @@
-/* Example modules */
-module Integer = {
-  type t = int;
-};
-
-module String = {
-  type t = string;
-};
-
-module Float = {
-  type t = float;
-};
-
 /* Util functions */
 let setAllBitsRightOfLeadingOne (x: int) :int =>
   /* 0b0100 => 0b0111 ; 0b101 => 0b111 */
@@ -119,16 +106,3 @@ module BloomFilter (BF_Functor: {type t;}) => {
     result
   };
 };
-
-/* test */
-module S = BloomFilter String;
-
-let bF = S.create 100 0.1;
-
-fmapEither (fun bf => Format.printf "%B\n" (S.test bf "hey")) bF;
-
-fmapEither (fun bf => S.insert bf "hey") bF;
-
-fmapEither (fun bf => Format.printf "%B\n" (S.test bf "hey")) bF;
-
-fmapEither (fun bf => BitSet.count bf.S.bf) bF;

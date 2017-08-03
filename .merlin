@@ -1,1 +1,3 @@
-PKG reason extlib
+PKG reason extlib ounit
+S . 
+B _build
